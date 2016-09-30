@@ -1,23 +1,6 @@
 sudo docker build -t lcbruit/nginx_ssl:v1.1 .
 
-docker run -d \
-    -p 80:80 -p 443:443 \
-    -e 'DH_SIZE=512' \
-    -v /share:/share \
-    lcbruit/nginx_ssl:v1.1
-
-
-docker run -d \
--p 80:80 -p 443:443 \
--e 'DH_SIZE=512' \
--v $EXT_DIR:/etc/nginx/external/ \
-marvambass/nginx-ssl-secure
-
-/etc/ssl/certs/ssl-cert-snakeoil.pem
-/etc/ssl/private/ssl-cert-snakeoil.key
-
-
-sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout nginx-selfsigned.key -out nginx-selfsigned.crt
+sudo docker run -d -p 80:80 -p 443:443 -e 'DH_SIZE=512' -v /share:/etc/nginx/external/ lcbruit/nginx_ssl:v1.1
 
 
 # Docker very secured Nginx with secure SSL

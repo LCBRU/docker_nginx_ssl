@@ -16,12 +16,8 @@ RUN sed -i 's/access_log.*/access_log \/dev\/stdout;/g' /etc/nginx/nginx.conf; \
 ADD basic.conf /etc/nginx/conf.d/basic.conf
 ADD ssl.conf /etc/nginx/conf.d/ssl.conf
 
-#RUN rm /etc/nginx/sites-enabled/default
-#ADD sites-enabled/ /etc/nginx/sites-enabled
-#EXPOSE 80
-
 # Copy this file into place.
-#ADD index.html /usr/share/nginx/html
+ADD index.html /usr/share/nginx/html
 #ADD index.html /usr/share/nginx/www
 
 ADD entrypoint.sh /opt/entrypoint.sh
